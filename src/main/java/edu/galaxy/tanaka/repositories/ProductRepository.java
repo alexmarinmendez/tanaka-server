@@ -11,4 +11,6 @@ public interface ProductRepository extends JpaRepository<Product, Long>{
 	List<Product> findByNameLike(String name);
 	List<Product> findByDescriptionLike(String text);
 	
+	List<Product> findByState(Boolean state);
+	
 }
