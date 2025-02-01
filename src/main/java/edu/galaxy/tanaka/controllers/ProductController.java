@@ -29,7 +29,8 @@ public class ProductController {
 	public List<Product> findAll() {
 //		return productRepository.findAll();
 //		return productRepository.findByState(true);
-		return productRepository.findAllCustomSQL();
+//		return productRepository.findAllCustomSQL();
+		return productRepository.findAllCustomJPQL();
 	}
 	
 	// /api/v1/products/1
