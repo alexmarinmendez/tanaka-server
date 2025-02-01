@@ -28,7 +28,8 @@ public class ProductController {
 	@GetMapping
 	public List<Product> findAll() {
 //		return productRepository.findAll();
-		return productRepository.findByState(true);
+//		return productRepository.findByState(true);
+		return productRepository.findAllCustomSQL();
 	}
 	
 	// /api/v1/products/1
