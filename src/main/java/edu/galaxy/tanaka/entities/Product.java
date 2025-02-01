@@ -27,4 +27,6 @@ public class Product {
 	private Double precio;
 	private String image;
 	
+	private Boolean state;
+	
 }

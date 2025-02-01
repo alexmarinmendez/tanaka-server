@@ -70,13 +70,27 @@ public class ProductController {
 			oProduct.setStock(product.getStock());
 			return productRepository.save(oProduct);
 		} else {
+			throw new RuntimeException("Producto not found");
+		}
+	}
+	
+	
+//	@DeleteMapping("/{id}")
+//	public void hardDelete(@PathVariable Long id) {
+//		productRepository.deleteById(id);
+//	}
+	
+	@DeleteMapping("/{id}")
+	public void softDelete(@PathVariable Long id) {
+		Optional<Product> optProduct = productRepository.findById(id);
+		if (optProduct.isPresent()) {
+			Product oProduct = optProduct.get();
+			oProduct.setState(false);
+			productRepository.save(oProduct);
+		} else {
 			throw new RuntimeException("Product not found");
 		}
 	}
 	
-	@DeleteMapping("/{id}")
-	public void hardDelete(@PathVariable Long id) {
-		productRepository.deleteById(id);
-	}
 
 }
