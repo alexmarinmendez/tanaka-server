@@ -11,6 +11,6 @@ public interface ProductService {
 	Optional<Product> findById(Long id);
 	List<Product> findByNameLike(String name);
 	List<Product> findByDescriptionLike(String description);
-	Product save(Product product);
-	Product softDelete(Product product);
+	Product save(Product product, Boolean state);
+
 }

@@ -62,14 +62,14 @@ public class ProductController {
 	@PostMapping
 	public Product save(@RequestBody Product product) {
 //		return productRepository.save(product);
-		return productService.save(product);
+		return productService.save(product, true);
 	}
 	
 	@PutMapping("/{id}")
 	public Product update(@PathVariable Long id, @RequestBody Product product) {
 		product.setId(id);
 //		return productRepository.save(product);
-		return productService.save(product);
+		return productService.save(product, true);
 	}
 	
 	@PatchMapping("/{id}")
@@ -80,7 +80,7 @@ public class ProductController {
 			Product oProduct = optProduct.get();
 			oProduct.setStock(product.getStock());
 //			return productRepository.save(oProduct);
-			return productService.save(oProduct);
+			return productService.save(oProduct, true);
 		} else {
 			throw new RuntimeException("Producto not found");
 		}
@@ -99,9 +99,9 @@ public class ProductController {
 		Optional<Product> optProduct = productService.findById(id);
 		if (optProduct.isPresent()) {
 			Product oProduct = optProduct.get();
-			oProduct.setState(false);
+//			oProduct.setState(false);
 //			productRepository.save(oProduct);
-			productService.softDelete(oProduct);
+			productService.save(oProduct, false);
 		} else {
 			throw new RuntimeException("Product not found");
 		}

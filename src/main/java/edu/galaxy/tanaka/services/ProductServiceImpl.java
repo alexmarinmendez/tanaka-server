@@ -36,13 +36,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Product save(Product product) {
-		product.setState(true);
-		return productRepository.save(product);
-	}
-
-	@Override
-	public Product softDelete(Product product) {
+	public Product save(Product product, Boolean state) {
+		if (state) 
+			product.setState(true);
+		else 
+			product.setState(false);
 		return productRepository.save(product);
 	}
 
