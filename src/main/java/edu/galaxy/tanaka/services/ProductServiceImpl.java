@@ -1,6 +1,7 @@
 package edu.galaxy.tanaka.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,26 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> findAll() {
 		return productRepository.findByState(true);
+	}
+
+	@Override
+	public Optional<Product> findById(Long id) {
+		return productRepository.findById(id);
+	}
+
+	@Override
+	public List<Product> findByNameLike(String name) {
+		return productRepository.findByNameLike(name);
+	}
+
+	@Override
+	public List<Product> findByDescriptionLike(String description) {
+		return productRepository.findByDescriptionLike(description);
+	}
+
+	@Override
+	public Product save(Product product) {
+		return productRepository.save(product);
 	}
 
 }
