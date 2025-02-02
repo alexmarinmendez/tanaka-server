@@ -41,4 +41,9 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.save(product);
 	}
 
+	@Override
+	public Product softDelete(Product product) {
+		return productRepository.save(product);
+	}
+
 }

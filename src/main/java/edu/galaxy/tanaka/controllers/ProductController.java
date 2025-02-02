@@ -101,7 +101,7 @@ public class ProductController {
 			Product oProduct = optProduct.get();
 			oProduct.setState(false);
 //			productRepository.save(oProduct);
-			productService.save(oProduct);
+			productService.softDelete(oProduct);
 		} else {
 			throw new RuntimeException("Product not found");
 		}
