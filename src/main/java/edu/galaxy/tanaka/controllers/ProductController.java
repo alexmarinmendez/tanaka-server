@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.galaxy.tanaka.entities.Product;
 import edu.galaxy.tanaka.repositories.ProductRepository;
+import edu.galaxy.tanaka.services.ProductService;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -25,12 +26,16 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 	
+	@Autowired
+	private ProductService productService;
+	
 	@GetMapping
 	public List<Product> findAll() {
 //		return productRepository.findAll();
 //		return productRepository.findByState(true);
 //		return productRepository.findAllCustomSQL();
-		return productRepository.findAllCustomJPQL();
+//		return productRepository.findAllCustomJPQL();
+		return productService.findAll();
 	}
 	
 	// /api/v1/products/1
